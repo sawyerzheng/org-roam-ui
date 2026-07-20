@@ -52,6 +52,7 @@ import Sidebar from '../components/Sidebar'
 import { Tweaks } from '../components/Tweaks'
 import { usePersistantState } from '../util/persistant-state'
 import { ThemeContext, ThemeContextProps } from '../util/themecontext'
+import { getWsUrl } from '../util/apiConfig'
 import { openNodeInEmacs } from '../util/webSocketFunctions'
 import { drawLabels } from '../components/Graph/drawLabels'
 import { VariablesContext } from '../util/variablesContext'
@@ -430,7 +431,7 @@ export function GraphPage() {
 
   useEffect(() => {
     // initialize websocket
-    WebSocketRef.current = new ReconnectingWebSocket('ws://localhost:35903')
+    WebSocketRef.current = new ReconnectingWebSocket(getWsUrl())
     WebSocketRef.current.addEventListener('open', () => {
       console.log('Connection with Emacs established')
     })

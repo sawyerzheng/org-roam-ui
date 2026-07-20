@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import path from 'path'
 import { Container } from '@chakra-ui/react'
+import { getApiBaseUrl } from '../../util/apiConfig'
 //import '../../../public/placeholder.png'
 
 export interface OrgImageProps {
@@ -28,7 +29,7 @@ export const OrgImage = (props: OrgImageProps) => {
     return `${src}`
   }
   const homeLoader = ({ src, width, quality }: { [key: string]: string | number }) => {
-    return `http://localhost:35901/img/${src}`
+    return `${getApiBaseUrl()}/img/${src}`
   }
 
   if (src.replaceAll(/(http)?.*/g, '$1')) {
@@ -47,7 +48,7 @@ export const OrgImage = (props: OrgImageProps) => {
 
   return (
     <Container my={4} position="relative">
-      <img alt="Wow, an image." src={`http://localhost:35901/img/${encodedPath}`} />
+      <img alt="Wow, an image." src={`${getApiBaseUrl()}/img/${encodedPath}`} />
     </Container>
   )
 }

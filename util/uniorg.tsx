@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { LinksByNodeId, NodeByCite, NodeById } from '../pages/index'
+import { getApiBaseUrl } from './apiConfig'
 import { ProcessedOrg } from './processOrg'
 
 export interface UniOrgProps {
@@ -37,7 +38,7 @@ export const UniOrg = (props: UniOrgProps) => {
 
   const id = encodeURIComponent(encodeURIComponent(previewNode.id))
   useEffect(() => {
-    fetch(`http://localhost:35901/node/${id}`)
+    fetch(`${getApiBaseUrl()}/node/${id}`)
       .then((res) => {
         return res.text()
       })

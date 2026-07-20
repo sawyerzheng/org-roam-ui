@@ -16,6 +16,7 @@ import {
 } from '@chakra-ui/react'
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 
+import { getApiBaseUrl } from '../../util/apiConfig'
 import { ProcessedOrg } from '../../util/processOrg'
 // import unified from 'unified'
 //import createStream from 'unified-stream'
@@ -151,7 +152,7 @@ export const PreviewLink = (props: LinkProps) => {
   const extraNoteStyle = outline ? outlineNoteStyle : viewerNoteStyle
   console.log(previewNode)
   const getText = () => {
-    fetch(`http://localhost:35901/node/${id}`)
+    fetch(`${getApiBaseUrl()}/node/${id}`)
       .then((res) => {
         return res.text()
       })
